@@ -16,21 +16,24 @@ FASTLED_USING_NAMESPACE
 #warning "Requires FastLED 3.1 or later; check github for latest code."
 #endif
 
-#define DATA_PIN    2
-#define CLK_PIN     0
+#define DATA_PIN1    32
+#define CLK_PIN1     21
+#define DATA_PIN2    25
+#define CLK_PIN2     22
 #define LED_TYPE    APA102
 #define COLOR_ORDER RGB
 #define NUM_LEDS    86
 CRGB leds[NUM_LEDS];
 
-#define BRIGHTNESS         100
+#define BRIGHTNESS         150
 #define FRAMES_PER_SECOND  120
 
 void setup() {
   delay(3000); // 3 second delay for recovery
 
   // tell FastLED about the LED strip configuration
-  FastLED.addLeds<LED_TYPE,DATA_PIN,CLK_PIN>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+  FastLED.addLeds<LED_TYPE,DATA_PIN1,CLK_PIN1>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+  FastLED.addLeds<LED_TYPE,DATA_PIN2,CLK_PIN2>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
   //FastLED.addLeds<LED_TYPE,DATA_PIN,CLK_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
 
   // set master brightness control
