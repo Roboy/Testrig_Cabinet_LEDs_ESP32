@@ -2,4 +2,12 @@
 // copy this file to "WifiSetup.h" and add the local credentials
 
 #define WIFI_SSID "CHANGEME"
-#define WIFI_PASSWORT "changeme"
+#define WIFI_PASSWORD "changeme"
+
+/*
+#define WIFI_IP IPAddress(192, 168, 0, 42)
+#define WIFI_GATEWAY IPAddress(192, 168, 0, 1)
+#define WIFI_SUBNET IPAddress(255, 255, 0, 0)
+#define WIFI_DNS_PRIMARY IPAddress(1, 1, 1, 1)
+#define WIFI_DNS_SECONDARY IPAddress(8, 8, 8, 8)
+*/

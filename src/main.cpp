@@ -31,6 +31,18 @@ CRGB leds[NUM_LEDS];
 void setup() {
   delay(3000); // 3 second delay for recovery
 
+  WiFi.persistent(false);         //Permanentes Schreiben im Flash abschalten http://www.forum-raspberrypi.de/Thread-esp8266-achtung-flash-speicher-schreibzugriff-bei-jedem-aufruf-von-u-a-wifi-begin
+  WiFi.mode(WIFI_STA);
+
+  #ifdef WIFI_IP
+  if (!WiFi.config(WIFI_IP, WIFI_GATEWAY, WIFI_SUBNET, WIFI_DNS_PRIMARY, WIFI_DNS_SECONDARY)) {
+    Serial.println("STA Failed to configure");
+  }
+  #endif
+
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  delay(100);
+
   // tell FastLED about the LED strip configuration
   FastLED.addLeds<LED_TYPE,DATA_PIN1,CLK_PIN1>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
   FastLED.addLeds<LED_TYPE,DATA_PIN2,CLK_PIN2>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
@@ -47,6 +59,8 @@ SimplePatternList gPatterns = { rainbow, sinelon, juggle, bpm };
 
 uint8_t gCurrentPatternNumber = 0; // Index number of which pattern is current
 uint8_t gHue = 0; // rotating "base color" used by many of the patterns
+
+
 
 void loop()
 {
