@@ -1,0 +1,5 @@
+
+// copy this file to "WifiSetup.h" and add the local credentials
+
+#define WIFI_SSID "CHANGEME"
+#define WIFI_PASSWORT "changeme"
